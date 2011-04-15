@@ -1,8 +1,8 @@
-Object.clone = function(object) {
+exports.clone = function(object) {
     return Object.merge({}, object);
 }
 
-Object.merge = function(object, extend) {
+exports.merge = function(object, extend) {
     for (var p in extend) {
         try {
             if (extend[p].constructor == Object) {
@@ -18,6 +18,6 @@ Object.merge = function(object, extend) {
     return object;
 }
 
-Array.ensure = function(array) {
+exports.arrayEnsure = function(array) {
     return Array.isArray(array) ? array : [ array ];
 }

@@ -4,6 +4,8 @@ require('./utils.js');
 
 var sessions = {};
 
+// TODO: connect-session
+
 Session = module.exports = function(server, clientId, client) {
     this.server = server;
     this.id     = clientId;

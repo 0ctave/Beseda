@@ -9,14 +9,14 @@ var Router         = require('./router.js'),
     MessageRouter  = require('./message_router.js'),
     MonitorUpdater = require('./monitor_updater.js');
 
-require('./utils.js');
+var utils = require('./utils.js');
 
 // TODO: Change router to connect framework
 
 Server = module.exports = function(options) {
     process.EventEmitter.call(this);
 
-    this.options = Object.merge({
+    this.options = utils.merge({
         host : '0.0.0.0',
         port : 4000,
         ssl  : false,
@@ -156,7 +156,8 @@ Server = module.exports = function(options) {
     }
 }
 
-util.inherits(Server, process.EventEmitter);
+//util.inherits(Server, process.EventEmitter);
+Server.prototype.__proto__ = process.EventEmitter.prototype;
 
 Server.prototype.listen = function(port, host) {
     if (this._isHTTPServerOpened()) {
